@@ -1,0 +1,160 @@
+<!DOCTYPE html>
+<html lang="tr">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<title>EczanePanel — Google Sheets Bağlantılı</title>
+<style>
+*{box-sizing:border-box;margin:0;padding:0}body{font-family:Arial,system-ui,sans-serif;background:#0a0e1a;color:#f1f5f9;font-size:14px}.layout{display:grid;grid-template-columns:230px 1fr;grid-template-rows:60px 1fr;min-height:100vh}.header{grid-column:1/-1;background:#0d1321;border-bottom:1px solid #1f2d3d;display:flex;align-items:center;padding:0 22px;gap:12px}.logo{font-weight:800}.logo span{background:#10b981;color:#fff;padding:7px 9px;border-radius:8px;margin-right:8px}.badge-top{margin-left:auto;background:rgba(239,68,68,.12);color:#ef4444;border:1px solid rgba(239,68,68,.35);border-radius:20px;padding:5px 11px;font-size:12px}.sidebar{background:#0d1321;border-right:1px solid #1f2d3d;padding:14px 0}.nav-title{font-size:11px;color:#4b5563;text-transform:uppercase;letter-spacing:.1em;padding:10px 22px}.nav{display:block;width:100%;border:0;background:transparent;color:#94a3b8;padding:12px 22px;text-align:left;cursor:pointer;font-weight:600}.nav:hover,.nav.active{background:rgba(16,185,129,.1);color:#10b981;box-shadow:inset 3px 0 0 #10b981}.main{padding:24px;overflow:auto}.head{display:flex;justify-content:space-between;align-items:flex-start;margin-bottom:18px}.title{font-size:19px;font-weight:800}.sub{color:#94a3b8;font-size:12px;margin-top:4px}.grid{display:grid;grid-template-columns:repeat(4,1fr);gap:14px;margin-bottom:18px}.kpi{background:#111827;border:1px solid #1f2d3d;border-radius:13px;padding:16px}.kpi small{color:#94a3b8;text-transform:uppercase;font-weight:700;font-size:10px}.kpi b{display:block;font-size:30px;margin-top:6px}.card{background:#111827;border:1px solid #1f2d3d;border-radius:14px;padding:16px;margin-bottom:14px}.search{width:100%;background:#111827;border:1px solid #1f2d3d;color:#fff;border-radius:10px;padding:12px;margin-bottom:14px}table{width:100%;border-collapse:collapse;background:#111827;border-radius:14px;overflow:hidden}th,td{padding:12px;border-bottom:1px solid rgba(31,45,61,.65);text-align:left}th{font-size:11px;color:#94a3b8;text-transform:uppercase}.status{display:inline-block;border-radius:6px;padding:4px 8px;font-size:11px;font-weight:800}.ok{background:rgba(16,185,129,.12);color:#10b981;border:1px solid rgba(16,185,129,.35)}.low{background:rgba(245,158,11,.12);color:#f59e0b;border:1px solid rgba(245,158,11,.35)}.crit{background:rgba(239,68,68,.12);color:#ef4444;border:1px solid rgba(239,68,68,.35)}.btn{border:0;border-radius:9px;padding:9px 13px;font-weight:800;cursor:pointer}.btn-green{background:#10b981;color:#fff}.btn-outline{background:transparent;color:#94a3b8;border:1px solid #1f2d3d}.btn-red{background:#ef4444;color:#fff}.row{display:flex;gap:10px;align-items:center}.price-row{display:grid;grid-template-columns:1fr 90px 90px 110px;gap:8px;align-items:center;background:#0a0e1a;border:1px solid #1f2d3d;border-radius:10px;padding:11px;margin-top:8px}.best{border-color:#10b981;background:rgba(16,185,129,.08)}.hidden{display:none}.bar{width:90px;height:6px;background:rgba(255,255,255,.08);border-radius:99px;overflow:hidden}.fill{height:100%;background:#10b981}.fill.lowbar{background:#f59e0b}.fill.critbar{background:#ef4444}.source{font-size:12px;color:#94a3b8;background:#111827;border:1px solid #1f2d3d;border-radius:999px;padding:7px 10px}.cart-item{display:grid;grid-template-columns:1fr 130px 110px 50px;gap:10px;align-items:center;border-bottom:1px solid #1f2d3d;padding:12px 0}.qty button{width:28px;height:28px;border-radius:7px;border:1px solid #1f2d3d;background:#0a0e1a;color:#fff;cursor:pointer}.qty span{display:inline-block;width:28px;text-align:center;font-weight:800}.chat{height:460px;display:flex;flex-direction:column}.messages{flex:1;overflow:auto;padding:10px}.msg{max-width:78%;padding:11px 13px;border-radius:13px;margin-bottom:10px;white-space:pre-wrap}.user{margin-left:auto;background:#10b981}.ai{background:#0a0e1a;border:1px solid #1f2d3d}.chatbar{display:flex;gap:8px;border-top:1px solid #1f2d3d;padding-top:12px}.chatbar input,.api-input{flex:1;background:#0a0e1a;border:1px solid #1f2d3d;color:#fff;border-radius:10px;padding:10px}.quick{display:flex;gap:8px;flex-wrap:wrap;margin:10px 0}.quick button{font-size:12px;background:#0a0e1a;color:#94a3b8;border:1px solid #1f2d3d;border-radius:999px;padding:7px 10px;cursor:pointer}.modal{position:fixed;inset:0;background:rgba(0,0,0,.75);display:flex;align-items:center;justify-content:center}.modal-box{background:#111827;border:1px solid #10b981;border-radius:16px;padding:28px;text-align:center;max-width:360px}.note{background:rgba(245,158,11,.08);border:1px solid rgba(245,158,11,.25);color:#fbbf24;border-radius:10px;padding:10px;font-size:12px;margin-bottom:14px}@media(max-width:850px){.layout{grid-template-columns:1fr}.sidebar{display:flex;overflow:auto}.nav-title{display:none}.grid{grid-template-columns:repeat(2,1fr)}.main{padding:14px}.header{grid-row:1}.sidebar{grid-row:2}.main{grid-row:3}.price-row,.cart-item{grid-template-columns:1fr}.badge-top{display:none}}
+</style>
+</head>
+<body>
+<div class="layout">
+  <header class="header"><div class="logo"><span>💊</span>EczanePanel</div><div class="sub">Google Sheets + n8n + Gemini</div><div id="topBadge" class="badge-top">Yükleniyor...</div></header>
+  <aside class="sidebar"><div class="nav-title">Menü</div><button class="nav active" data-tab="dashboard">⊞ Genel Bakış</button><button class="nav" data-tab="critical">⚠ Kritik Stok</button><button class="nav" data-tab="order">◎ Sipariş Oluştur</button><button class="nav" data-tab="ai">◈ AI Asistan</button></aside>
+  <main class="main">
+    <section id="dashboard" class="page"></section>
+    <section id="critical" class="page hidden"></section>
+    <section id="order" class="page hidden"></section>
+    <section id="ai" class="page hidden"></section>
+  </main>
+</div>
+
+<script>
+/* ======================================================
+   API / WEBHOOK GİRİŞ YERLERİ
+   1) n8n workflow_4 Get Products Production URL -> N8N_GET_PRODUCTS_WEBHOOK_URL
+   2) n8n workflow_1 Order Production URL -> N8N_ORDER_WEBHOOK_URL
+   3) n8n workflow_2 AI Log Production URL -> N8N_AI_LOG_WEBHOOK_URL
+   4) Gemini API key istersen buraya yazma, ekrandan gir. Public GitHub'da key paylaşma.
+====================================================== */
+const CONFIG = {
+  GEMINI_API_KEY: "",
+  N8N_GET_PRODUCTS_WEBHOOK_URL: "",
+  N8N_ORDER_WEBHOOK_URL: "",
+  N8N_AI_LOG_WEBHOOK_URL: "",
+  N8N_STOCK_ALERT_WEBHOOK_URL: ""
+};
+
+// Gemini model adı burada tek yerden yönetilir.
+const GEMINI_MODEL = "gemini-2.0-flash";
+
+const FALLBACK_DRUGS = [
+ {id:1,name:"Parol 500 mg Tablet",pack:"20 tb",active:"Parasetamol",atc:"N02BE01",stock:3,thr:10,w:{selcuk:{name:"Selçuk Ecza Deposu",p:18.50,ok:true,d:1},hedef:{name:"Hedef Alliance Ecza",p:17.20,ok:true,d:2},sancak:{name:"Sancak Ecza Deposu",p:19.80,ok:false,d:3}}},
+ {id:2,name:"Majezik 100 mg Film Tablet",pack:"30 tb",active:"Flurbiprofen",atc:"M01AE09",stock:2,thr:8,w:{selcuk:{name:"Selçuk Ecza Deposu",p:42.30,ok:true,d:1},hedef:{name:"Hedef Alliance Ecza",p:40.10,ok:true,d:1},sancak:{name:"Sancak Ecza Deposu",p:43.90,ok:true,d:2}}},
+ {id:3,name:"Augmentin 1000 mg Film Tablet",pack:"14 tb",active:"Amoksisilin + Klav. asit",atc:"J01CR02",stock:5,thr:6,w:{selcuk:{name:"Selçuk Ecza Deposu",p:185.60,ok:true,d:1},hedef:{name:"Hedef Alliance Ecza",p:178.40,ok:false,d:3},sancak:{name:"Sancak Ecza Deposu",p:182.00,ok:true,d:1}}},
+ {id:4,name:"Nexium 40 mg Tablet",pack:"28 tb",active:"Esomeprazol",atc:"A02BC05",stock:12,thr:8,w:{selcuk:{name:"Selçuk Ecza Deposu",p:89.50,ok:true,d:1},hedef:{name:"Hedef Alliance Ecza",p:85.20,ok:true,d:2},sancak:{name:"Sancak Ecza Deposu",p:91.00,ok:true,d:1}}},
+ {id:5,name:"Ventolin 100 mcg İnhaler",pack:"200 doz",active:"Salbutamol",atc:"R03AC02",stock:1,thr:5,w:{selcuk:{name:"Selçuk Ecza Deposu",p:67.80,ok:true,d:1},hedef:{name:"Hedef Alliance Ecza",p:65.40,ok:true,d:2},sancak:{name:"Sancak Ecza Deposu",p:68.50,ok:true,d:2}}},
+ {id:6,name:"Novalgin 500 mg Tablet",pack:"20 tb",active:"Metamizol Sodyum",atc:"N02BB02",stock:8,thr:10,w:{selcuk:{name:"Selçuk Ecza Deposu",p:32.10,ok:true,d:1},hedef:{name:"Hedef Alliance Ecza",p:30.80,ok:true,d:1},sancak:{name:"Sancak Ecza Deposu",p:33.50,ok:false,d:4}}},
+ {id:7,name:"Glucophage 1000 mg Film Tablet",pack:"100 tb",active:"Metformin HCl",atc:"A10BA02",stock:18,thr:12,w:{selcuk:{name:"Selçuk Ecza Deposu",p:54.20,ok:true,d:1},hedef:{name:"Hedef Alliance Ecza",p:51.90,ok:true,d:2},sancak:{name:"Sancak Ecza Deposu",p:55.80,ok:true,d:1}}},
+ {id:8,name:"Zyrtec 10 mg Film Tablet",pack:"20 tb",active:"Setirizin HCl",atc:"R06AE07",stock:4,thr:8,w:{selcuk:{name:"Selçuk Ecza Deposu",p:38.90,ok:true,d:1},hedef:{name:"Hedef Alliance Ecza",p:36.50,ok:true,d:2},sancak:{name:"Sancak Ecza Deposu",p:39.70,ok:true,d:1}}},
+ {id:9,name:"Beloc ZOK 50 mg Tablet",pack:"20 tb",active:"Metoprolol Süksinat",atc:"C07AB02",stock:22,thr:10,w:{selcuk:{name:"Selçuk Ecza Deposu",p:48.60,ok:true,d:1},hedef:{name:"Hedef Alliance Ecza",p:46.20,ok:true,d:2},sancak:{name:"Sancak Ecza Deposu",p:49.80,ok:true,d:1}}},
+ {id:10,name:"Lipitor 20 mg Film Tablet",pack:"30 tb",active:"Atorvastatin Kalsiyum",atc:"C10AA05",stock:6,thr:8,w:{selcuk:{name:"Selçuk Ecza Deposu",p:95.40,ok:false,d:4},hedef:{name:"Hedef Alliance Ecza",p:91.20,ok:true,d:1},sancak:{name:"Sancak Ecza Deposu",p:96.80,ok:true,d:2}}},
+ {id:11,name:"Cipro 500 mg Film Tablet",pack:"14 tb",active:"Siprofloksasin HCl",atc:"J01MA02",stock:0,thr:6,w:{selcuk:{name:"Selçuk Ecza Deposu",p:72.30,ok:true,d:1},hedef:{name:"Hedef Alliance Ecza",p:69.50,ok:true,d:1},sancak:{name:"Sancak Ecza Deposu",p:74.10,ok:true,d:2}}},
+ {id:12,name:"Klacid 500 mg Tablet",pack:"14 tb",active:"Klaritromisin",atc:"J01FA09",stock:3,thr:5,w:{selcuk:{name:"Selçuk Ecza Deposu",p:112.80,ok:true,d:1},hedef:{name:"Hedef Alliance Ecza",p:108.40,ok:true,d:2},sancak:{name:"Sancak Ecza Deposu",p:115.20,ok:false,d:3}}},
+ {id:13,name:"Losec 20 mg Kapsül",pack:"28 kps",active:"Omeprazol",atc:"A02BC01",stock:25,thr:10,w:{selcuk:{name:"Selçuk Ecza Deposu",p:45.60,ok:true,d:1},hedef:{name:"Hedef Alliance Ecza",p:43.20,ok:true,d:2},sancak:{name:"Sancak Ecza Deposu",p:46.80,ok:true,d:1}}},
+ {id:14,name:"Sinecod 50 mg Tablet",pack:"10 tb",active:"Butamirat Sitrat",atc:"R05DB13",stock:7,thr:8,w:{selcuk:{name:"Selçuk Ecza Deposu",p:28.40,ok:true,d:1},hedef:{name:"Hedef Alliance Ecza",p:26.80,ok:true,d:2},sancak:{name:"Sancak Ecza Deposu",p:29.60,ok:true,d:1}}},
+ {id:15,name:"Concor 5 mg Film Tablet",pack:"28 tb",active:"Bisoprolol Fumarat",atc:"C07AB07",stock:14,thr:8,w:{selcuk:{name:"Selçuk Ecza Deposu",p:62.10,ok:true,d:1},hedef:{name:"Hedef Alliance Ecza",p:59.40,ok:true,d:2},sancak:{name:"Sancak Ecza Deposu",p:63.50,ok:true,d:1}}},
+ {id:16,name:"Aspirin 500 mg Tablet",pack:"20 tb",active:"Asetilsalisilik Asit",atc:"N02BA01",stock:9,thr:15,w:{selcuk:{name:"Selçuk Ecza Deposu",p:12.80,ok:true,d:1},hedef:{name:"Hedef Alliance Ecza",p:11.90,ok:true,d:1},sancak:{name:"Sancak Ecza Deposu",p:13.40,ok:true,d:1}}},
+ {id:17,name:"Voltaren Emulgel %1,16",pack:"100 g",active:"Diklofenak",atc:"M02AA15",stock:11,thr:8,w:{selcuk:{name:"Selçuk Ecza Deposu",p:78.20,ok:true,d:1},hedef:{name:"Hedef Alliance Ecza",p:74.60,ok:true,d:2},sancak:{name:"Sancak Ecza Deposu",p:79.80,ok:true,d:1}}},
+ {id:18,name:"Xanax 0.25 mg Tablet",pack:"50 tb",active:"Alprazolam",atc:"N05BA12",stock:2,thr:5,w:{selcuk:{name:"Selçuk Ecza Deposu",p:34.50,ok:true,d:1},hedef:{name:"Hedef Alliance Ecza",p:33.20,ok:true,d:1},sancak:{name:"Sancak Ecza Deposu",p:35.80,ok:true,d:2}}},
+ {id:19,name:"Aprovel 150 mg Film Tablet",pack:"28 tb",active:"İrbesartan",atc:"C09CA04",stock:16,thr:8,w:{selcuk:{name:"Selçuk Ecza Deposu",p:87.30,ok:true,d:1},hedef:{name:"Hedef Alliance Ecza",p:83.60,ok:true,d:2},sancak:{name:"Sancak Ecza Deposu",p:89.10,ok:true,d:1}}},
+ {id:20,name:"Proksafen 50 mg Kapsül",pack:"20 kps",active:"Tramadol HCl",atc:"N02AX02",stock:4,thr:6,w:{selcuk:{name:"Selçuk Ecza Deposu",p:48.90,ok:true,d:1},hedef:{name:"Hedef Alliance Ecza",p:46.50,ok:false,d:4},sancak:{name:"Sancak Ecza Deposu",p:50.20,ok:true,d:2}}}
+];
+
+let products=[...FALLBACK_DRUGS];
+let source="Yedek veri";
+let cart={};
+let activeTab="dashboard";
+let messages=[{role:"ai",text:"Merhaba! Stok durumu, fiyat karşılaştırması ve sipariş önerileri için buradayım."}];
+let geminiKey=CONFIG.GEMINI_API_KEY || "";
+
+function money(v){return Number(v||0).toFixed(2).replace('.',',')+' ₺'}
+function statusOf(d){if(Number(d.stock)===0)return 'empty'; if(Number(d.stock)/Number(d.thr)<0.35)return 'critical'; if(Number(d.stock)<Number(d.thr))return 'low'; return 'ok'}
+function badge(st){return st==='ok'?'<span class="status ok">✓ Normal</span>':st==='low'?'<span class="status low">⚠ Düşük</span>':'<span class="status crit">▼ Kritik</span>'}
+function bestWh(d){return Object.entries(d.w||{}).filter(([k,w])=>w.ok===true||w.ok==='TRUE'||w.ok==='true').sort((a,b)=>Number(a[1].p)-Number(b[1].p))[0]?.[0]||null}
+function criticalList(){return products.filter(d=>statusOf(d)!=='ok')}
+function normalizeRows(data){
+  if(Array.isArray(data.products)) return data.products;
+  if(Array.isArray(data)) return data;
+  return [];
+}
+async function loadProducts(){
+  if(!CONFIG.N8N_GET_PRODUCTS_WEBHOOK_URL){renderAll();return;}
+  try{
+    const res=await fetch(CONFIG.N8N_GET_PRODUCTS_WEBHOOK_URL);
+    if(!res.ok) throw new Error('HTTP '+res.status);
+    const data=await res.json();
+    const rows=normalizeRows(data);
+    if(rows.length){products=rows;source='Google Sheets';}
+  }catch(e){source='Yedek veri - n8n bağlantısı alınamadı'; console.warn(e);}
+  renderAll();
+}
+async function postJSON(url,payload){
+  if(!url) return {ok:false,empty:true};
+  try{const r=await fetch(url,{method:'POST',headers:{'Content-Type':'application/json'},body:JSON.stringify(payload)});return {ok:r.ok,status:r.status};}
+  catch(e){return {ok:false,error:e.message};}
+}
+function setTab(t){activeTab=t;document.querySelectorAll('.nav').forEach(b=>b.classList.toggle('active',b.dataset.tab===t));document.querySelectorAll('.page').forEach(p=>p.classList.add('hidden'));document.getElementById(t).classList.remove('hidden');renderAll();}
+document.querySelectorAll('.nav').forEach(b=>b.onclick=()=>setTab(b.dataset.tab));
+
+function renderDashboard(){
+ const c=criticalList();
+ document.getElementById('topBadge').textContent=`⚠ ${c.length} Kritik Ürün`;
+ const ok=products.filter(d=>statusOf(d)==='ok').length, empty=products.filter(d=>Number(d.stock)===0).length;
+ document.getElementById('dashboard').innerHTML=`<div class="head"><div><div class="title">Stok Genel Bakış</div><div class="sub">Veri kaynağı: <b>${source}</b></div></div><button class="btn btn-outline" onclick="loadProducts()">↻ Sheets'ten Yenile</button></div><div class="grid"><div class="kpi"><small>Toplam Ürün</small><b>${products.length}</b></div><div class="kpi"><small>Stok Yok</small><b style="color:#ef4444">${empty}</b></div><div class="kpi"><small>Kritik / Düşük</small><b style="color:#f59e0b">${c.length}</b></div><div class="kpi"><small>Normal Stok</small><b style="color:#10b981">${ok}</b></div></div><input id="search" class="search" placeholder="İlaç adı veya etkin madde ara..." oninput="renderProductTable(this.value)"><div id="productTable"></div>`;
+ renderProductTable('');
+}
+function renderProductTable(q=''){
+ const list=products.filter(d=>(d.name+' '+d.active).toLowerCase().includes(q.toLowerCase()));
+ document.getElementById('productTable').innerHTML=`<table><thead><tr><th>İlaç</th><th>Etkin Madde</th><th>Stok / Eşik</th><th>Durum</th><th>En Düşük Fiyat</th><th></th></tr></thead><tbody>${list.map(d=>{const st=statusOf(d), bw=bestWh(d);const pct=Math.min(100,Math.round(Number(d.stock)/Math.max(Number(d.thr)*1.5,1)*100));return `<tr><td><b>${d.name}</b><div class="sub">${d.pack||''} · ${d.atc||''}</div></td><td>${d.active||''}</td><td><div class="row"><b>${d.stock}</b><div><div class="bar"><div class="fill ${st==='ok'?'':st==='low'?'lowbar':'critbar'}" style="width:${pct}%"></div></div><div class="sub">/${d.thr}</div></div></div></td><td>${badge(st)}</td><td>${bw?money(d.w[bw].p)+' ('+(d.w[bw].name||bw)+')':'Yok'}</td><td>${st!=='ok'&&bw?`<button class="btn btn-green" onclick="addCart(${d.id},'${bw}')">Sipariş</button>`:''}</td></tr>`}).join('')}</tbody></table>`;
+}
+function renderCritical(){
+ const c=criticalList();
+ document.getElementById('critical').innerHTML=`<div class="head"><div><div class="title">Kritik Stok — Depo Fiyat Karşılaştırması</div><div class="sub">Google Sheets'ten gelen stok ve depo fiyatlarına göre hesaplanır. Veri kaynağı: <b>${source}</b></div></div><button class="btn btn-green" onclick="setTab('order')">Sepete Git (${Object.keys(cart).length})</button></div>${c.length?c.map(d=>{const bw=bestWh(d);return `<div class="card"><div class="head"><div><b>${d.name}</b><div class="sub">${d.active||''} · Stok: ${d.stock} / Eşik: ${d.thr}</div></div>${badge(statusOf(d))}</div>${Object.entries(d.w||{}).map(([wid,w])=>`<div class="price-row ${wid===bw?'best':''}"><b>${w.name||wid}</b><span>${money(w.p)}</span><span>${w.ok?'Stok var':'Stok yok'}</span><button class="btn ${w.ok?'btn-green':'btn-outline'}" ${w.ok?'':'disabled'} onclick="addCart(${d.id},'${wid}')">${wid===bw?'EN UCUZ · ':''}Ekle</button></div>`).join('')}</div>`}).join(''):`<div class="card">Kritik stok yok.</div>`}`;
+}
+function addCart(id,wh){cart[id]=cart[id]&&cart[id].wh===wh?{wh,qty:cart[id].qty+1}:{wh,qty:1};setTab('order');}
+function updateQty(id,delta){if(!cart[id])return;cart[id].qty+=delta;if(cart[id].qty<=0)delete cart[id];renderOrder();}
+function removeCart(id){delete cart[id];renderOrder();}
+function cartItems(){return Object.entries(cart).map(([id,v])=>({drug:products.find(d=>String(d.id)===String(id)),wh:v.wh,qty:v.qty})).filter(x=>x.drug)}
+function renderOrder(){
+ const items=cartItems();const total=items.reduce((s,i)=>s+Number(i.drug.w[i.wh].p)*i.qty,0);
+ document.getElementById('order').innerHTML=`<div class="head"><div><div class="title">Sipariş Oluştur</div><div class="sub">${items.length} ürün · Toplam ${money(total)}</div></div></div>${items.length?`<div class="card">${items.map(i=>`<div class="cart-item"><div><b>${i.drug.name}</b><div class="sub">${i.drug.w[i.wh].name} · ${money(i.drug.w[i.wh].p)}/kutu</div></div><div class="qty"><button onclick="updateQty(${i.drug.id},-1)">−</button><span>${i.qty}</span><button onclick="updateQty(${i.drug.id},1)">+</button></div><b>${money(Number(i.drug.w[i.wh].p)*i.qty)}</b><button class="btn btn-red" onclick="removeCart(${i.drug.id})">×</button></div>`).join('')}</div><div class="card"><div class="head"><b>Toplam Tutar</b><b style="font-size:24px;color:#10b981">${money(total)}</b></div><button class="btn btn-green" style="width:100%;padding:13px" onclick="confirmOrder()">✓ Siparişleri Onayla ve Sheets'e Kaydet</button></div>`:`<div class="card" style="text-align:center;padding:50px"><h2>🛒 Sepet boş</h2><br><button class="btn btn-green" onclick="setTab('critical')">Kritik Stoka Dön</button></div>`}`;
+}
+async function confirmOrder(){
+ const items=cartItems();const orderId='ORD-'+Date.now();
+ const payload={order_id:orderId,order_date:new Date().toISOString(),items:items.map(i=>({warehouse_name:i.drug.w[i.wh].name,product_id:i.drug.id,product_name:i.drug.name,quantity:i.qty,unit_price:Number(i.drug.w[i.wh].p),total_price:Number(i.drug.w[i.wh].p)*i.qty,status:'Created'}))};
+ const result=await postJSON(CONFIG.N8N_ORDER_WEBHOOK_URL,payload);
+ const msg=result.ok?'Siparişler n8n üzerinden Google Sheets Orders sayfasına gönderildi.':'Sipariş ekranda onaylandı ama n8n Order Webhook URL boş veya bağlantı başarısız.';
+ document.body.insertAdjacentHTML('beforeend',`<div class="modal" onclick="this.remove();cart={};setTab('dashboard')"><div class="modal-box" onclick="event.stopPropagation()"><h1>✅</h1><h2>Sipariş Oluşturuldu</h2><p class="sub" style="margin:12px 0">${msg}</p><button class="btn btn-green" onclick="this.closest('.modal').remove();cart={};setTab('dashboard')">Tamam</button></div></div>`);
+}
+function renderAI(){
+ document.getElementById('ai').innerHTML=`<div class="head"><div><div class="title">AI Asistan</div><div class="sub">Gemini API + AI_Logs Google Sheets kaydı</div></div></div><div class="note">Gemini API key'i public GitHub'a yazma. Demoda bu alana ekrandan girmen daha güvenli.</div><div class="card"><div class="row"><b>Gemini API:</b><input class="api-input" type="password" placeholder="AIzaSy..." value="${geminiKey}" oninput="geminiKey=this.value"></div><div class="quick"><button onclick="askAI('Hangi ürünleri acil sipariş etmeliyim?')">Acil sipariş öner</button><button onclick="askAI('En ucuz depoyu öner')">En ucuz depo</button><button onclick="askAI('Bugünkü stok özetini ver')">Stok özeti</button></div><div class="chat"><div id="msgs" class="messages">${messages.map(m=>`<div class="msg ${m.role==='user'?'user':'ai'}">${m.text}</div>`).join('')}</div><div class="chatbar"><input id="aiInput" placeholder="Stok, fiyat veya sipariş önerisi sor..." onkeydown="if(event.key==='Enter')askAI(this.value)"><button class="btn btn-green" onclick="askAI(document.getElementById('aiInput').value)">Gönder</button></div></div></div>`;
+}
+async function askAI(text){
+ if(!text.trim())return;messages.push({role:'user',text});messages.push({role:'ai',text:'Düşünüyor...'});renderAI();
+ const ctx=`Sen Türkçe konuşan EczanePanel AI asistanısın. Kısa ve net cevap ver. Kritik stoklar: ${criticalList().map(d=>d.name+' stok:'+d.stock+' eşik:'+d.thr).join('; ')}. Kullanıcı sorusu: ${text}`;
+ let answer='';
+ if(!geminiKey){answer='Gemini API key girilmedi. API key alanını doldurmalısın.';}
+ else{
+   try{
+     const temizGeminiKey = geminiKey.trim();
+     const r = await fetch(`https://generativelanguage.googleapis.com/v1beta/models/${GEMINI_MODEL}:generateContent?key=${encodeURIComponent(temizGeminiKey)}`,{
+       method:'POST',
+       headers:{'Content-Type':'application/json'},
+       body:JSON.stringify({contents:[{parts:[{text:ctx}]}]})
+     });
+     const d = await r.json();
+     answer = d.candidates?.[0]?.content?.parts?.[0]?.text || ('Yanıt alınamadı: '+(d.error?.message||'Bilinmeyen hata'));
+   }
+   catch(e){answer='Bağlantı hatası: '+e.message;}
+ }
+ messages[messages.length-1]={role:'ai',text:answer};
+ postJSON(CONFIG.N8N_AI_LOG_WEBHOOK_URL,{date:new Date().toISOString(),user_question:text,ai_answer:answer,related_module:'AI Asistan'});
+ renderAI();
+}
+function renderAll(){if(activeTab==='dashboard')renderDashboard(); if(activeTab==='critical')renderCritical(); if(activeTab==='order')renderOrder(); if(activeTab==='ai')renderAI();}
+loadProducts();
+</script>
+</body>
+</html>
